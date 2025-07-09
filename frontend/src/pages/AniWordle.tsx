@@ -36,11 +36,13 @@ const AniWordle: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const fetchWord = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/aniwordle/random');
+      const res = await fetch(`${apiUrl}/api/aniwordle/random`);
       if (!res.ok) throw new Error('No se pudo obtener la palabra');
       const data = await res.json();
       setAnswer(data.word);

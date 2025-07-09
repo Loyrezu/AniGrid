@@ -33,11 +33,13 @@ const AnimeGrid: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const fetchGrid = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/animegrid/random');
+      const res = await fetch(`${apiUrl}/api/animegrid/random`);
       if (!res.ok) throw new Error('No se pudo obtener el grid');
       const data = await res.json();
       setGrid(data);

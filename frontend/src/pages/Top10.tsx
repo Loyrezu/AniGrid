@@ -20,11 +20,13 @@ const Top10: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const fetchTop10 = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/top10/random');
+      const res = await fetch(`${apiUrl}/api/top10/random`);
       if (!res.ok) throw new Error('No se pudo obtener la lista');
       const json = await res.json();
       setData(json);

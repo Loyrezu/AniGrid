@@ -30,11 +30,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const login = async (email: string, password: string) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/user/login', {
+      const res = await fetch(`${apiUrl}/api/user/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -52,7 +54,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/user/register', {
+      const res = await fetch(`${apiUrl}/api/user/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, name, password }),

@@ -20,11 +20,13 @@ const Connections: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const fetchConnections = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/connections/random');
+      const res = await fetch(`${apiUrl}/api/connections/random`);
       if (!res.ok) throw new Error('No se pudo obtener los datos');
       const json = await res.json();
       setData(json);

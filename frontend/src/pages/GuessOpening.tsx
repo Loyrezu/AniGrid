@@ -20,6 +20,8 @@ const GuessOpening: React.FC = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [error, setError] = useState('');
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const fetchOpening = async () => {
     setLoading(true);
     setFeedback('');
@@ -29,7 +31,7 @@ const GuessOpening: React.FC = () => {
     setShowDetails(false);
     setError('');
     try {
-      const res = await fetch('http://localhost:4000/api/openings/random');
+      const res = await fetch(`${apiUrl}/api/openings/random`);
       if (!res.ok) throw new Error('No se pudo obtener el opening');
       const data = await res.json();
       setOpening(data);
