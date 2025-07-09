@@ -1,0 +1,30 @@
+body {
+  background: #0a192f;
+  color: #ffffff;
+  font-family: 'Montserrat', 'Poppins', 'Roboto', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+button {
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #64ffda;
+  color: #0a192f;
+  transform: scale(1.05);
+} 
